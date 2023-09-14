@@ -1,0 +1,21 @@
+
+server:
+  port: ${PORT:8081}
+
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+  gateway:
+    excludedURLs: /api/v1/authenticate,/api/v1/signup
+  application:
+    name: blog-api-gateway
+
+eureka:
+  instance:
+    prefer-ip-address: 'true'
+    hostname: localhost
+  service-url: http://${eureka.instance.hostname}:8761/eureka/
